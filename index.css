@@ -1,0 +1,209 @@
+/* ========== Google Fonts Import ========== */
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ========== Root Variables ========== */
+:root[data-theme="light"] {
+  --text: hsl(236, 60%, 5%);
+  --background: hsl(240, 60%, 99%);
+  --primary: hsl(236, 59%, 51%);
+  --secondary: hsl(271, 60%, 71%);
+  --accent: hsl(279, 60%, 63%);
+}
+
+:root[data-theme="dark"] {
+  --text: hsl(236, 60%, 95%);
+  --background: hsl(240, 60%, 1%);
+  --primary: hsl(236, 59%, 49%);
+  --secondary: hsl(271, 59%, 29%);
+  --accent: hsl(279, 60%, 37%);
+}
+
+/* ========== Font & typography========== */
+:root {
+  --body-font: 'Montserrat', sans-serif;
+  --second-font: 'Montagu Slab', serif;
+  --font-size-h1: 1.5rem;
+  --font-size-h2: 1.25rem;
+  --font-size-h3: 1rem;
+  --font-size-base: 0.938rem;
+  --font-size-small: 0.813rem;
+  --font-size-smaller: 0.75rem;
+
+  /* Font weight */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  --nav-height: 4rem;
+  --bottom-nav-height: 4rem;
+  --transition: 0.3s ease;
+
+}
+@media screen and (min-width: 1150px){
+  :root{
+    --biggest-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/* ========== Base Styles ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body, input, button{
+    font-family: var(--body-font);
+    font-size: var(--font-size-base);
+}
+body {
+  background-color: var(--background);
+  color: var(--text);
+  /* line-height: 1.6; */
+}
+
+/* Heading Styles */
+h1, h2, h3{
+    color: var(--text);
+    font-family: var(--second-font);
+    font-weight: var(--font-medium);
+}
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
+
+/* ========== Top Navigation ========== */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: var(--nav-height);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--secondary);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+/* Logo */
+.logo{
+    text-decoration: none;
+}
+
+.logo-img {
+ 
+}
+
+/* Desktop Nav Links */
+.main-nav .nav-list {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+.main-nav .nav-list a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.main-nav .nav-list a:hover {
+  color: var(--primary);
+}
+
+/* Icons on the right */
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+}
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.icon-btn:hover {
+  color: var(--primary);
+}
+
+/* ========== Bottom Navigation ========== */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--bottom-nav-height);
+  background-color: var(--background);
+  border-top: 1px solid var(--secondary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  font-size: var(--font-size-smaller);
+  transition: color var(--transition);
+}
+.bottom-nav .nav-item i {
+  font-size: 1.5rem;
+}
+.bottom-nav .nav-item:hover {
+  color: var(--primary);
+}
+
+/* ========== Responsive Breakpoints ========== */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: var(--bottom-nav-height);
+  }
+}
+
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: none;
+  }
+}
