@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeIcon = document.getElementById('theme-icon');
   const root = document.documentElement;
 
-  // Initialize icon based on current theme attribute
+  // Theme toggle
   function updateIcon() {
     if (root.getAttribute('data-theme') === 'dark') {
       themeIcon.classList.replace('bx-moon', 'bx-sun');
@@ -20,5 +20,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     updateIcon();
+  });
+
+  // Scrollspy
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function activateLinkOnScroll() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach((section) => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 100; // adjust for fixed nav height
+      const sectionId = section.getAttribute("id");
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        document
+          .querySelector(`.nav-link[href="#${sectionId}"]`)
+          ?.classList.add("active-link");
+      } else {
+        document
+          .querySelector(`.nav-link[href="#${sectionId}"]`)
+          ?.classList.remove("active-link");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activateLinkOnScroll);
+
+  // Optional: Immediate active state on click
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      navLinks.forEach((l) => l.classList.remove("active-link"));
+      this.classList.add("active-link");
+    });
   });
 });
